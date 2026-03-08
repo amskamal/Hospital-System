@@ -1,0 +1,95 @@
+﻿@model Doctor
+
+<h1 style="background-color:lightgray; color:darkslategray">Create:</h1>
+
+<form method="post" asp-controller="Doctors" asp-action="Create">
+    <div class="row">
+        <label asp-for="DoctorName" class="col-5"></label>
+        <input asp-for="DoctorName" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="DoctorName"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="DepartmentId" class="col-5"></label>
+        <select asp-for="DepartmentId" asp-items="@(new SelectList(ViewBag.AllDepartments, "DeptId", "DepartmentName"))" class="col-4 form-control">
+
+            <option disabled selected>select a Department....</option>
+
+        </select>
+        <span class="text-danger" asp-validation-for="DepartmentId"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="DoctorScienceDegrees" class="col-5"></label>
+        <input asp-for="DoctorScienceDegrees" class="col-4 form-control" />
+        <span class="text-danger" asp-validation- for="DoctorScienceDegrees"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="DegreeDate" class="col-5"></label>
+        <input asp-for="DegreeDate" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="DegreeDate"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="DoctorDaysPerWeek" class="col-5"></label>
+        <input asp-for="DoctorDaysPerWeek" class="col-4 form-control" />
+        <span class="text-danger" asp-validation- for="DoctorDaysPerWeek"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="DoctorTimePerDay" class="col-5"></label>
+        <input asp-for="DoctorTimePerDay" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="DoctorTimePerDay"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="CheckUpFee" class="col-5"></label>
+        <input asp-for="CheckUpFee" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="CheckUpFee"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="AdditionalFee" class="col-5"></label>
+        <input asp-for="AdditionalFee" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="AdditionalFee"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="PhoneNo1" class="col-5"></label>
+        <input asp-for="PhoneNo1" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="PhoneNo1"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="PhoneNo2" class="col-5"></label>
+        <input asp-for="PhoneNo2" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="PhoneNo2"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="Email" class="col-5"></label>
+        <input asp-for="Email" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="ConfirmEmaill" class="col-5"></label>
+        <input asp-for="ConfirmEmaill" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="ConfirmEmaill"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="DoctorBirthDate" class="col-5"></label>
+        <input asp-for="DoctorBirthDate" class="col-4 form-control" />
+        <span class="text-danger" asp-validation-for="DoctorBirthDate"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">save</button>
+    <hr />
+    <a asp-controller="Doctors" asp-action="index"><i class="fas fa-undo-alt"></i></a>
+    <br />
+    <div asp-validation-summary="All"></div>
+
+
+</form>

@@ -1,0 +1,52 @@
+﻿@model Doctor
+<h1>Are you sure that you want to delete this Doctor?</h1>
+
+<dl class="row">
+    <dt class="col-2">@Html.DisplayNameFor(item => item.DocId)</dt>
+    <dd class="col-10">@Html.DisplayFor(item => item.DocId)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(item => item.DoctorName)</dt>
+    <dd class="col-10">@Html.DisplayFor(item => item.DoctorName)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(item => item.DepartmentId)</dt>
+    <dd class="col-10">@Html.DisplayFor(item => item.Department.DepartmentName)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(item => item.DoctorScienceDegrees)</dt>
+    <dd class="col-10">@Html.DisplayFor(item => item.DoctorScienceDegrees)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(item => item.DegreeDate)</dt>
+    <dd class="col-10">@Html.DisplayFor(item => item.DegreeDate)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(item => item.DoctorDaysPerWeek)</dt>
+    <dd class="col-10">@Html.DisplayFor(item => item.DoctorDaysPerWeek)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(item => item.DoctorTimePerDay)</dt>
+    <dd class="col-10">@Html.DisplayFor(item => item.DoctorTimePerDay)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(item => item.CheckUpFee)</dt>
+    <dd class="col-10">@Html.DisplayFor(item => item.CheckUpFee)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(item => item.AdditionalFee)</dt>
+    <dd class="col-10">@Html.DisplayFor(item => item.AdditionalFee)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(item => item.PhoneNo1)</dt>
+    <dd class="col-10">@Html.DisplayFor(item => item.PhoneNo1)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(item => item.PhoneNo2)</dt>
+    <dd class="col-10">@Html.DisplayFor(item => item.PhoneNo2)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(item => item.Email)</dt>
+    <dd class="col-10">@Html.DisplayFor(item => item.Email)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(item => item.DoctorBirthDate)</dt>
+    <dd class="col-10">@Html.DisplayFor(item => item.DoctorBirthDate)</dd>
+</dl>
+
+<form method="post" asp-controller="Doctors" asp-action="Delete">
+
+    <input hidden asp-for="DocId" />
+    <button type="submit" class=" btn btn-danger">Delete</button>
+
+</form>
+<hr />
+<a asp-controller="Doctors" asp-action="index"><i class="fas fa-undo-alt"></i></a>

@@ -1,0 +1,36 @@
+﻿@model Visit
+
+<h1 style="background-color:lightgray; color:darkslategray">Details:</h1>
+
+<dl class="row">
+    <dt class="col-2"><center>@Html.DisplayNameFor(item => item.VisitId)</center></dt>
+    <dd class="col-10"><center>@Html.DisplayFor(item => item.VisitId)</center></dd>
+
+    <dt class="col-2"><center></center>@Html.DisplayNameFor(item => item.VisitingTime)</center></dt>
+    <dd class="col-10"><center>@Html.DisplayFor(item => item.VisitingTime)</center></dd>
+
+    <dt class="col-2"><center>@Html.DisplayNameFor(item => item.Prescription)</center></dt>
+    <dd class="col-10"><center>@Html.DisplayFor(item => item.Prescription)</center></dd>
+
+    <dt class="col-2"><center>@Html.DisplayNameFor(item => item.DoctorId)</center></dt>
+    <dd class="col-10"><center>@Html.DisplayFor(item => item.Doctor.DoctorName)</center></dd>
+
+    <dt class="col-2"><center>@Html.DisplayNameFor(item => item.PatientId)</center></dt>
+    <dd class="col-10"><center>@Html.DisplayFor(item => item.Patient.PatientName)</center></dd>
+
+    <dt class="col-2"><center>@Html.DisplayNameFor(item => item.InsuranceCompanyID)</center></dt>
+    <dd class="col-10"><center>@Html.DisplayFor(item => item.InsuranceCompany.InsuranceCompanyName)</center></dd>
+
+    <dt class="col-2"><center>@Html.DisplayNameFor(item => item.InsuranceCompanyID)</center></dt>
+    <dd class="col-10"><center>@Html.DisplayFor(item => item.InsuranceCompany.DiscountPercentage)</center></dd>
+</dl>
+
+<hr />
+<form method="post" asp-controller="Visits" asp-action="Delete">
+
+    <input hidden asp-for="VisitId" />
+    <button type="submit" class=" btn btn-danger">Delete</button>
+
+</form>
+<hr />
+<a asp-controller="Visits" asp-action="index"><i class="fas fa-undo-alt"></i></a>

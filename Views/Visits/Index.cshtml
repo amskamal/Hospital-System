@@ -1,0 +1,124 @@
+﻿@model IEnumerable<Visit>
+
+<form method="get" asp-controller="Visits" asp-action="Index" class="row">
+
+    <label class="col-2">page Size</label>
+    <br />
+    <input type="number" name="pageSize" class="col-2 form-control" value="@ViewBag.pageSize" />
+
+    <label class="col-2">page Number</label>
+    <br />
+    <input type="number" name="pageNumber" class="col-2 form-control" value="@ViewBag.pageNUmber" />
+
+    <button class="btn btn-primary"><i class="fas fa-rocket"></i></button>
+</form>
+<hr />
+<p>searching by Doctor: </p>
+<form method="get" asp-controller="Visits" asp-action="Index" class="row">
+
+    <select class="form-control col-4" name="doctorId" asp-items="@(new SelectList(ViewBag.AllDoctors, "DocId", "DoctorName",ViewBag.selectDoctorId))">
+
+        <option value="0">All Doctors</option>
+
+    </select>
+
+    <input name="doctorSearchText" value="@ViewBag.doctorSearchText  " class="col-4" />
+    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+</form>
+<hr />
+<p>searching by Patient: </p>
+<form method="get" asp-controller="Visits" asp-action="Index" class="row">
+    <select class="form-control col-4" name="patientId" asp-items="@(new SelectList(ViewBag.AllPatients, "PatientId", "PatientName",ViewBag.selectPatientId))">
+
+        <option value="0">All Patients</option>
+
+    </select>
+
+    <input name="patientSearchtext" value="@ViewBag.patientSearchtext  " class="col-4" />
+    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+</form>
+<hr />
+
+<p>searching by Insurance: </p>
+<form method="get" asp-controller="Visits" asp-action="Index" class="row">
+    <select class="form-control col-4" name="insuranceId" asp-items="@(new SelectList(ViewBag.AllInsuranceCompanies, "InsuranceCompanyId", "InsuranceCompanyName",ViewBag.selectInsuranceId))">
+
+        <option value="0">All Insurance</option>
+
+    </select>
+
+    <input name="insuranceSearchText" value="@ViewBag.insuranceSearchText  " class="col-4" />
+    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+</form>
+<hr />
+
+
+<a asp-controller="Visits" asp-action="create" class="btn btn-primary"><i class="fas fa-plus-circle"></i></a>
+<br />
+
+@if (Model.ToList().Count > 0)
+{
+    <table class="table-bordered table table-hover  table-striped">
+        <thead style="background-color: ThreeDDarkShadow">
+
+            <tr>
+                <th>
+                    <center>
+                        VisitId
+                    </center>
+                </th>
+                <th>
+                    <center>
+                        Reservation Time
+
+                    </center>
+                </th>
+                <th><center>Prescription</center></th>
+                <th><center>Patient Name</center></th>
+                <th><center>Doctor Name</center></th>
+                <th><center> Insurance Company Name</center></th>
+                <th><center> Total Fee</center></th>
+                <th><center> Fee After Discount</center></th>
+                <th><center>View</center></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><center>@item.VisitId</center></td>
+                    <td><center>@item.VisitingTime</center></td>
+                    <td><center>@item.Prescription</center></td>
+                    <td><center>@item.Patient.PatientName</center></td>
+                    <td><center>@item.Doctor.DoctorName</center></td>
+                    <td><center>@item.InsuranceCompany.InsuranceCompanyName</center></td>
+                    <td><center>@item.Doctor.CheckUpFee</center></td>
+                    <td><center>@item.VisitcheckUpFree</center></td>
+                    <td>
+                        <center>
+                            <a asp-controller="Visits" asp-action="Edit" asp-route-id="@item.VisitId"><i class="far fa-edit"></i></a> |
+                            <a asp-controller="Visits" asp-action="Details" asp-route-id="@item.VisitId"><i class="fas fa-info-circle"></i></a> |
+                            <a asp-controller="Visits" asp-action="Delete" asp-route-id="@item.VisitId"><i class="far fa-trash-alt"></i></a>
+                        </center>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot style="background-color: ThreeDDarkShadow">
+            <tr>
+                <th colspan="6"><center>Total Visits Checking Fee</center></th>
+                <th colspan="1"><center>@Model.Sum((item) => item.Doctor.CheckUpFee)</center></th>
+                <th colspan="1"><center>@Model.Sum((item) => item.VisitcheckUpFree)</center></th>
+                <th colspan="1"><center>EGP</center></th>
+            </tr>
+        </tfoot>
+    </table>
+}
+else
+{
+    <h1 class="alert alert-danger">there is no data to display</h1>
+}
+
+<hr />
+<a asp-controller="Home" asp-action="Index"><i class="fas fa-undo-alt"></i></a>
